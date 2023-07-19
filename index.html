@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="jquery-3.7.0.min.js"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container-fluid md:container m-auto pt-0 md:pt-5 px-0 md:px-5 sm:vertical-strech">
+      <div class="flex">
+        <div
+          id="filter-wrapper"
+          class="w-full md:w-80 z-10 absolute rounded-xl md:static bg-[#f2fafc] md:bg-white border-2 md:border-gray-300 border-[#20a7c2] p-20 md:p-5 mb-0 md:mb-5 sm:padding sm:vertical-strech-fixed"
+          style="padding-bottom: 5rem;"
+        >
+          <div class="flex justify-between">
+            <h2 class="font-semibold text-xl mb-3">Filter By</h2>
+            <button
+              onclick="$('#filter-wrapper').slideUp()"
+              class="inline md:hidden sm:close"
+            >
+              &times;
+            </button>
+          </div>
+          <div class="mb-3">
+            <h3 class="text-lg font-bold mb-2">Personal Care</h3>
+            <div class="checkbox-wrapper">
+              <input
+                class="checkbox category-checkbox"
+                data-value="Lip Care"
+                type="checkbox"
+                id="checkbox-lipcare"
+              />
+              <label class="checkbox-label" for="checkbox-lipcare"
+                >Lip Care(15)</label
+              >
+            </div>
+            <div class="checkbox-wrapper">
+              <input
+                class="checkbox category-checkbox"
+                data-value="Face Care"
+                type="checkbox"
+                id="checkbox-facecare"
+              />
+              <label class="checkbox-label" for="checkbox-facecare"
+                >Face Care(19)</label
+              >
+            </div>
+            <div class="checkbox-wrapper">
+              <input
+                class="checkbox category-checkbox"
+                data-value="Body Moisturizers"
+                type="checkbox"
+                id="checkbox-bodymoisturizers"
+              />
+              <label class="checkbox-label" for="checkbox-bodymoisturizers"
+                >Body Moisturizers(19)</label
+              >
+            </div>
+            <div class="checkbox-wrapper">
+              <input
+                class="checkbox category-checkbox"
+                data-value="Bath & Shower"
+                type="checkbox"
+                id="checkbox-bathshower"
+              />
+              <label class="checkbox-label" for="checkbox-bathshower"
+                >Bath & Shower(7)</label
+              >
+            </div>
+            <div class="checkbox-wrapper">
+              <input
+                class="checkbox category-checkbox"
+                data-value="Hair Care"
+                type="checkbox"
+                id="checkbox-haircare"
+              />
+              <label class="checkbox-label" for="checkbox-haircare"
+                >Hair Care(12)</label
+              >
+            </div>
+            <div class="checkbox-wrapper">
+              <input
+                class="checkbox category-checkbox"
+                data-value="Hand Soap & Sanitizers"
+                type="checkbox"
+                id="checkbox-handsoapsanitizers"
+              />
+              <label class="checkbox-label" for="checkbox-handsoapsanitizers"
+                >Hand Soap & Sanitizers(5)</label
+              >
+            </div>
+            <div class="checkbox-wrapper">
+              <input
+                class="checkbox category-checkbox"
+                data-value="Sun Protection"
+                type="checkbox"
+                id="checkbox-sunprotection"
+              />
+              <label class="checkbox-label" for="checkbox-sunprotection"
+                >Sun Protection(3)</label
+              >
+            </div>
+            <div class="checkbox-wrapper block md:hidden">
+              <label id="more-btn" onclick="handleMoreClick()"
+                >More...</label
+              >
+            </div>
+          </div>
+          <div class="mb-3" id="household-wrapper">
+            <h3 class="text-lg font-bold mb-2">Household Essentials</h3>
+            <div class="checkbox-wrapper">
+              <input
+                class="checkbox category-checkbox"
+                data-value="Air Fresheners"
+                type="checkbox"
+                id="checkbox-airfresheners"
+              />
+              <label class="checkbox-label" for="checkbox-airfresheners"
+                >Air Fresheners(4)</label
+              >
+            </div>
+            <div class="checkbox-wrapper">
+              <input
+                class="checkbox category-checkbox"
+                data-value="Candles"
+                type="checkbox"
+                id="checkbox-candles"
+              />
+              <label class="checkbox-label" for="checkbox-candles"
+                >Candles(35)</label
+              >
+            </div>
+            <div class="checkbox-wrapper">
+              <input
+                class="checkbox category-checkbox"
+                data-value="Dish Detergents"
+                type="checkbox"
+                id="checkbox-dishdetergents"
+              />
+              <label class="checkbox-label" for="checkbox-dishdetergents"
+                >Dish Detergents(6)</label
+              >
+            </div>
+            <div class="checkbox-wrapper">
+              <input
+                class="checkbox category-checkbox"
+                data-value="Laundry Detergents"
+                type="checkbox"
+                id="checkbox-laundrydetergents"
+              />
+              <label class="checkbox-label" for="checkbox-laundrydetergents"
+                >Laundry Detergents(9)</label
+              >
+            </div>
+            <div class="checkbox-wrapper">
+              <input
+                class="checkbox category-checkbox"
+                data-value="All Purpose Cleaner"
+                type="checkbox"
+                id="checkbox-allpurposecleaner"
+              />
+              <label class="checkbox-label" for="checkbox-allpurposecleaner"
+                >All Purpose Cleaner(2)</label
+              >
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <h3 class="text-lg font-bold mb-3">Price Range</h3>
+            <div class="range">
+              <div class="range-slider">
+                <span class="range-selected"></span>
+              </div>
+              <div class="range-input">
+                <input type="range" class="min" min="1" max="15" value="1" step="1">
+                <input type="range" class="max" min="1" max="15" value="15" step="1">
+              </div>
+              <div class="range-price">  
+                <span>$1</span>
+                <span>$5</span>
+                <span>$10</span>
+                <span>$15</span>
+                <!-- <label for="min" hidden>Min</label> -->
+                <input type="number" name="min" value="1" hidden>      
+                <!-- <label for="max" hidden>Max</label> -->
+                <input type="number" name="max" value="15" hidden>      
+              </div>
+            </div>
+          </div>
+          <div class="mb-3" style="margin-bottom: 3rem">
+            <h3 class="text-lg font-bold mb-2">Cashback (%)</h3>
+            <div class="checkbox-wrapper">
+              <input
+                class="checkbox cashback-checkbox"
+                type="checkbox"
+                id="checkbox-cashback-25"
+                data-value="0-25"
+              />
+              <label class="checkbox-label" for="checkbox-cashback-25"
+                >0% - 25%</label
+              >
+            </div>
+            <div class="checkbox-wrapper">
+              <input
+                class="checkbox cashback-checkbox"
+                type="checkbox"
+                id="checkbox-cashback-50"
+                data-value="25-50"
+              />
+              <label class="checkbox-label" for="checkbox-cashback-50"
+                >25% - 50%</label
+              >
+            </div>
+            <div class="checkbox-wrapper">
+              <input
+                class="checkbox cashback-checkbox"
+                type="checkbox"
+                id="checkbox-cashback-75"
+                data-value="50-75"
+              />
+              <label class="checkbox-label" for="checkbox-cashback-75"
+                >50% - 75%</label
+              >
+            </div>
+          </div>
+          <button
+            onclick="clearFilter()"
+            class="inline-block rounded-full border-2 border-gray-300 px-6 pb-[6px] pt-2 text-xs font-medium leading-normal text-gray-900 transition duration-150 ease-in-out hover:border-gray-800 hover:bg-gray-500 hover:bg-opacity-10 hover:text-gray-800 focus:border-gray-800 focus:text-gray-800 focus:outline-none focus:ring-0 active:border-gray-500 active:text-gray-500 sm:hidden-btns"
+           style="font-size: 14px;">
+            Clear All
+          </button>
+          <div class="flex justify-center md:hidden-btns">
+            <button onclick="clearFilter(true)" class="show-result inline-block rounded-full border-2 border-gray-300 px-6 pb-[6px] pt-2 text-xs font-medium leading-normal text-gray-900 transition duration-150 ease-in-out hover:border-gray-800 hover:bg-gray-500 hover:bg-opacity-10 hover:text-gray-800 focus:border-gray-800 focus:text-gray-800 focus:outline-none focus:ring-0 active:border-gray-500 active:text-gray-500" style="border:none; font-size: 1rem; color: #009ab9;">Clear</button>
+            <button class="show-result inline-block rounded-full border-2 border-gray-300 px-6 pb-[6px] pt-2 text-xs font-medium leading-normal text-gray-900 transition duration-150 ease-in-out hover:border-gray-800 hover:bg-gray-500 hover:bg-opacity-10 hover:text-gray-800 focus:border-gray-800 focus:text-gray-800 focus:outline-none focus:ring-0 active:border-gray-500 active:text-gray-500" style="border:none; font-size: 1rem; color: #009ab9;" onclick="$('#filter-wrapper').slideUp()">Show <span class="count-span text-bold"></span> results</button>
+          </div>
+        </div>
+        <div class="grow mx-3 md:mx-5 sm:mx-0" style="margin-left: 2rem;">
+          <div class="rounded-t-xl md:rounded-xl p-5 sm:bb bg-[#f6f7fb]">
+            <div class="relative mb-4 flex flex-wrap items-stretch">
+              <span
+                class="bg-white flex items-center whitespace-nowrap rounded-l-full border border-r-0 border-solid border-neutral-300 px-3 py-2 text-center text-base font-normal leading-[1.6] text-neutral-700"
+              >
+                <img src="./icons8-search.svg" class="w-5" />
+              </span>
+              <input
+                type="text"
+                class="bg-white relative m-0 block w-[1px] min-w-0 flex-auto rounded-r-full border border-l-0 border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-2 text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none"
+                placeholder="Search products"
+                id="search-input"
+              />
+              <img
+                src="./equalizer.svg"
+                onclick="$('#filter-wrapper').slideDown()"
+                class="inline md:hidden absolute w-8 right-5 top-2"
+              />
+            </div>
+            <div class="flex gap-3 flex-wrap">
+              <div class="flex">
+                <input
+                  type="checkbox"
+                  data-value="New"
+                  id="checkbox-new"
+                  class="tag-checkbox peer hidden"
+                />
+                <label for="checkbox-new" class="clickable-checkbox-label">
+                  New
+                </label>
+              </div>
+              <div class="flex">
+                <input
+                  type="checkbox"
+                  data-value="Recommended"
+                  id="checkbox-recommended"
+                  class="tag-checkbox peer hidden"
+                />
+                <label
+                  for="checkbox-recommended"
+                  class="clickable-checkbox-label"
+                >
+                  Recommended
+                </label>
+              </div>
+              <div class="flex">
+                <input
+                  type="checkbox"
+                  data-value="Best Sellers"
+                  id="checkbox-bestsellers"
+                  class="tag-checkbox peer hidden"
+                />
+                <label
+                  for="checkbox-bestsellers"
+                  class="clickable-checkbox-label"
+                >
+                  Best Sellers
+                </label>
+              </div>
+              <div class="flex">
+                <input
+                  type="checkbox"
+                  data-value="Samples"
+                  id="checkbox-samples"
+                  class="tag-checkbox peer hidden"
+                />
+                <label for="checkbox-samples" class="clickable-checkbox-label">
+                  Samples
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="pt-5">
+            <div class="p-5 flex justify-between">
+              <div>
+                <span id="count-span" class="count-span text-bold">10</span>
+                Results
+              </div>
+              <div class="flex gap-3">
+                <div class="font-bold ">Sort by price</div>
+                <div class="flex justify-center sm:hidden">
+                  <div
+                    class="mb-[0.125rem] mr-4 inline-block min-h-[1.5rem] pl-[1.5rem]"
+                  >
+                    <input
+                      class="price-radio radio-input"
+                      type="radio"
+                      name="inlineRadioOptions"
+                      id="lowtohigh"
+                      value="lowtohigh"
+                      onclick="switchRadioStatus(event)"
+                      checked
+                    />
+                    <label
+                      class="mt-px inline-block pl-[0.15rem] hover:cursor-pointer"
+                      for="lowtohigh"
+                      >Low to High</label
+                    >
+                  </div>
+                  <div
+                    class="mb-[0.125rem] mr-4 inline-block min-h-[1.5rem] pl-[1.5rem]"
+                  >
+                    <input
+                      class="price-radio radio-input"
+                      type="radio"
+                      onclick="switchRadioStatus(event)"
+                      name="inlineRadioOptions"
+                      id="hightolow"
+                      value="hightolow"
+                    />
+                    <label
+                      class="mt-px inline-block pl-[0.15rem] hover:cursor-pointer"
+                      for="hightolow"
+                      >High to Low</label
+                    >
+                  </div>
+                </div>
+                <div class="flex md:hidden" onclick="toggleSort(event)">
+                  <img src="./sort-az-svgrepo-com.svg" style="pointer-events: none;" alt="">
+                </div>
+              </div>
+            </div>
+            <div
+              class="grid grid-cols-2 md:grid-cols-4 gap-x-5 mb-5 sm:px-20"
+              id="products-container"
+            >
+              <div class="pt-5 pb-2 px-3 rounded-xl border-2 sm:mb-20">
+                <div
+                  class="text-sm text-center w-20 m-auto border-2 rounded-lg mb-3"
+                ></div>
+                <div class="mb-1"></div>
+                <div class="text-lg font-bold mb-2"></div>
+                <div class="text-sm"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
